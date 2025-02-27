@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  # MySQL Database Service
+  db:
+    image: mysql:5.6
+    container_name: db
+    hostname: db
+    environment:
+      MYSQL_ROOT_PASSWORD: 12113  # Set a strong password
+      MYSQL_DATABASE: artworkdb  # Set the database name
+    ports:
+      - "28011:3306"  # Expose MySQL on port 28011
+    networks:
+      - backend
+
+  # Spring Boot Application Service
+  application:
+    build:
+      context: .  # Builds the Docker image from the current directory
+      dockerfile: Dockerfile  # Uses your Dockerfile for Spring Boot app
+    environment:
+      - DB_HOST=db  # MySQL service name (Docker resolves it)
+      - DB_PORT=3306  # MySQL container port (not host port)
+      - DB_USER=root  # Root user
+      - DB_PASSWORD=12113  # Root password
+    ports:
+      - "8080:8080"  # Expose Spring Boot app on port 8080
+    depends_on:
+      - db  # Ensure MySQL starts first
+    restart: always  # Restart if it crashes
+    networks:
+      - backend
+
+# Define network for communication between containers
+networks:
+  backend:
+    driver: bridge
