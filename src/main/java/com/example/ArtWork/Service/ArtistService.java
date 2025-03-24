@@ -21,4 +21,9 @@ public class ArtistService {
         this.judgeRepository = judgeRepository;
     }
 
+	public Artist createArtist(Artist artist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
