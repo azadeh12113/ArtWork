@@ -1,9 +1,9 @@
-package com.example.ArtWork.Repository;
+package com.example.artwork.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.example.ArtWork.model.Artist;
-import com.example.ArtWork.model.Judge;
+import com.example.artwork.model.Artist;
+import com.example.artwork.model.Judge;
 
 import java.util.List;
 

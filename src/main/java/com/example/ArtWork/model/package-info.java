@@ -1,1 +1,1 @@
-package com.example.ArtWork.model;
+package com.example.artwork.model;
